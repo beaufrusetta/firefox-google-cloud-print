@@ -1,8 +1,13 @@
 {
+  "applications": {
+    "gecko": {
+      "id": "{b81e65cd-2988-4e27-8c9b-088c7c58101a}"
+    }
+  },
   "manifest_version": 2,
   "name": "Google Cloud Print",
   "description": "Print anything on Google Cloud Print from Firefox",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Giovanni T. Parra",
   "icons": {
     "16": "icon16.png",
