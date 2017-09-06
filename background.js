@@ -5,10 +5,26 @@ browser.browserAction.onClicked.addListener(function () {
 })
 
 function run (command) {
-  Promise.all([
-    browser.tabs.executeScript({file: '/vendor/gcp.js'}),
-    browser.tabs.executeScript({code: `window.cmd = "${command}"`})
-  ])
+  browser.tabs.executeScript({code: `
+var s = document.getElementById('f-gcp')
+if (!s) {
+  s = document.createElement('script')
+  s.classList.add('f-gcp')
+  s.src = '${browser.extension.getURL('script.js')}'
+  document.body.appendChild(s)
+}
+
+true
+  `})
+    .then(() =>
+      browser.tabs.executeScript({code: `
+var s = document.createElement('script')
+s.innerHTML = "run('${command}')"
+document.body.appendChild(s)
+
+true
+      `})
+    )
     .then(() =>
       browser.tabs.executeScript({
         file: '/script.js',

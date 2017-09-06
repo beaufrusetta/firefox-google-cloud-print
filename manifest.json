@@ -7,7 +7,7 @@
   "manifest_version": 2,
   "name": "Google Cloud Print",
   "description": "Print any page on Google Cloud Print directly from Firefox",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "author": "Giovanni T. Parra",
   "icons": {
     "16": "icon16.png",
@@ -27,9 +27,11 @@
     },
     "default_title": "Print this page on Google Cloud Print"
   },
+  "web_accessible_resources": [
+    "script.js"
+  ],
   "permissions": [
     "activeTab",
-    "contextMenus",
-    "https://mercury.postlight.com/parser"
+    "contextMenus"
   ]
 }
