@@ -6,8 +6,8 @@
   },
   "manifest_version": 2,
   "name": "Google Cloud Print",
-  "description": "Print anything on Google Cloud Print from Firefox",
-  "version": "0.0.2",
+  "description": "Print any page on Google Cloud Print directly from Firefox",
+  "version": "0.0.3",
   "author": "Giovanni T. Parra",
   "icons": {
     "16": "icon16.png",
@@ -19,17 +19,17 @@
     "scripts": ["background.js"],
     "persistent": false
   },
-  "options_ui": {
-    "page": "options.html",
-    "chrome_style": true,
-    "open_in_tab": true
-  },
   "browser_action": {
     "browser_style": true,
-    "default_icon": "icon.png",
-    "default_title": "Print on Google Cloud Print"
+    "default_icon": {
+      "19": "icon19.png",
+      "38": "icon38.png"
+    },
+    "default_title": "Print this page on Google Cloud Print"
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "contextMenus",
+    "https://mercury.postlight.com/parser"
   ]
 }
