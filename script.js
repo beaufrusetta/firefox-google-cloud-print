@@ -52,7 +52,7 @@ function run (command) {
         break
       case 'print-selection':
         var range
-        let selection = window.getSelection()
+        var selection = window.getSelection()
         if (selection.rangeCount > 0) {
           range = selection.getRangeAt(0)
           let clonedSelection = range.cloneContents()
@@ -60,6 +60,19 @@ function run (command) {
           div.appendChild(clonedSelection)
           let gadget = new cloudprint.Gadget()
           gadget.setPrintDocument('text/html', title, div.innerHTML)
+          gadget.openPrintDialog()
+        }
+        break
+      case 'print-raw-selection':
+        var range
+        var selection = window.getSelection()
+        if (selection.rangeCount > 0) {
+          range = selection.getRangeAt(0)
+          let clonedSelection = range.cloneContents()
+          let div = document.createElement('div')
+          div.appendChild(clonedSelection)
+          let gadget = new cloudprint.Gadget()
+          gadget.setPrintDocument('text/plain', title, div.innerText)
           gadget.openPrintDialog()
         }
         break

@@ -36,26 +36,22 @@ true
 
 browser.contextMenus.create({
   id: 'print-selection',
-  title: 'Print selection on Google Cloud Print',
+  title: 'Print selection as HTML on Google Cloud Print',
   contexts: ['selection']
 })
 
 browser.contextMenus.create({
-  id: 'print-page-as-article',
+  id: 'print-raw-selection',
+  title: 'Print selection as plain text on Google Cloud Print',
+  contexts: ['selection']
+})
+
+browser.contextMenus.create({
+  id: 'print-readable',
   title: 'Print current page as article on Google Cloud Print',
   contexts: ['page']
 })
 
 browser.contextMenus.onClicked.addListener(function (info, tab) {
-  switch (info.menuItemId) {
-    case 'print-raw-selection':
-      run('print-selection-raw')
-      break
-    case 'print-selection':
-      run('print-selection')
-      break
-    case 'print-page-as-article':
-      run('print-readable')
-      break
-  }
+  run(info.menuItemId)
 })
