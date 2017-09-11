@@ -29,9 +29,11 @@ if (!document.getElementById('f-gcp-i')) {
 
 function run (command) {
   included.then(() => {
+    var gadget
+    var selection
     switch (command) {
       case 'print-url':
-        let gadget = new cloudprint.Gadget()
+        gadget = new cloudprint.Gadget()
         gadget.setPrintDocument('url', title, url)
         gadget.openPrintDialog()
         break
@@ -51,10 +53,9 @@ function run (command) {
           })
         break
       case 'print-selection':
-        var range
-        var selection = window.getSelection()
+        selection = window.getSelection()
         if (selection.rangeCount > 0) {
-          range = selection.getRangeAt(0)
+          let range = selection.getRangeAt(0)
           let clonedSelection = range.cloneContents()
           let div = document.createElement('div')
           div.appendChild(clonedSelection)
@@ -64,10 +65,9 @@ function run (command) {
         }
         break
       case 'print-raw-selection':
-        var range
-        var selection = window.getSelection()
+        selection = window.getSelection()
         if (selection.rangeCount > 0) {
-          range = selection.getRangeAt(0)
+          let range = selection.getRangeAt(0)
           let clonedSelection = range.cloneContents()
           let div = document.createElement('div')
           div.appendChild(clonedSelection)
@@ -75,6 +75,12 @@ function run (command) {
           gadget.setPrintDocument('text/plain', title, div.innerText)
           gadget.openPrintDialog()
         }
+        break
+      case 'print-file':
+        let config = new cloudprint.Configuration()
+          .setMode(cloudprint.Configuration.Mode.PRINT_FILE)
+        gadget = new cloudprint.Gadget(config)
+        gadget.openPrintDialog()
         break
     }
   })

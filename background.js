@@ -1,7 +1,7 @@
 /* global browser */
 
 browser.browserAction.onClicked.addListener(function () {
-  run('print-url')
+  run('print-file')
 })
 
 function run (command) {
@@ -35,21 +35,27 @@ true
 }
 
 browser.contextMenus.create({
+  id: 'print-url',
+  title: 'Print current page',
+  contexts: ['page', 'selection']
+})
+
+browser.contextMenus.create({
+  id: 'print-readable',
+  title: 'Print current page as article',
+  contexts: ['page', 'selection']
+})
+
+browser.contextMenus.create({
   id: 'print-selection',
-  title: 'Print selection as HTML on Google Cloud Print',
+  title: 'Print selection formatted',
   contexts: ['selection']
 })
 
 browser.contextMenus.create({
   id: 'print-raw-selection',
-  title: 'Print selection as plain text on Google Cloud Print',
+  title: 'Print selection as plain text',
   contexts: ['selection']
-})
-
-browser.contextMenus.create({
-  id: 'print-readable',
-  title: 'Print current page as article on Google Cloud Print',
-  contexts: ['page']
 })
 
 browser.contextMenus.onClicked.addListener(function (info, tab) {

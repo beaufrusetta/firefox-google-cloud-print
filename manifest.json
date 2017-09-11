@@ -6,8 +6,8 @@
   },
   "manifest_version": 2,
   "name": "Google Cloud Print",
-  "description": "Print any page on Google Cloud Print directly from Firefox",
-  "version": "0.1.0",
+  "description": "Print any page or file on Google Cloud Print directly from Firefox",
+  "version": "0.2.0",
   "author": "Giovanni T. Parra",
   "icons": {
     "16": "icon16.png",
@@ -25,7 +25,7 @@
       "19": "icon19.png",
       "38": "icon38.png"
     },
-    "default_title": "Print this page on Google Cloud Print"
+    "default_title": "Print a local file on Google Cloud Print"
   },
   "web_accessible_resources": [
     "script.js"
